@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".loginActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -64,21 +64,6 @@
                 android:textColor="#0757f6"
                 android:textSize="20sp"
                 android:textStyle="italic" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button"
-                style="@android:style/Widget.Button"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/button_background2"
-                android:text="Get Started"
-                android:textColor="#ffffff"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
 
 
         </LinearLayout>
