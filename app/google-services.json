@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "748512681016",
+    "firebase_url": "https://vconnectchatapp-default-rtdb.firebaseio.com",
+    "project_id": "vconnectchatapp",
+    "storage_bucket": "vconnectchatapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748512681016:android:ad8a23dc9871cfae25dacd",
+        "android_client_info": {
+          "package_name": "uk.ac.tees.scdt.mad.c2170936.vconnectchatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748512681016-s62jgo6oqf01nfo2db62gcgnrj2hgcq0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uk.ac.tees.scdt.mad.c2170936.vconnectchatapp",
+            "certificate_hash": "c3d4527c2dc8d620237bb65290308acecad39ce2"
+          }
+        },
+        {
+          "client_id": "748512681016-9t2oc1io36urbgaltvblrumdnlv7d445.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA61XNRinOQSo88hBkeOCE3KEKcHOF_-Qc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748512681016-9t2oc1io36urbgaltvblrumdnlv7d445.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

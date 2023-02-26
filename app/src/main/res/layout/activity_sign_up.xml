@@ -136,7 +136,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button2"
+                android:id="@+id/regSignup"
                 style="@android:style/Widget.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -147,7 +147,6 @@
                 android:text="Create Account"
                 android:textColor="#ffffff"
                 android:textSize="22sp"
-
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
