@@ -105,6 +105,9 @@ public class SignUpActivity extends AppCompatActivity {
         UserHelperClass helperClass = new UserHelperClass(name, email, phone, password);
 
         reference.child(phone).setValue(helperClass);
+
+        Intent intent = new Intent(getApplicationContext(),loginActivity.class);
+        startActivity(intent);
     }
 
     @Override
