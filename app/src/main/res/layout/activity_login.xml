@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Login to your account"
+                android:text="Account Login"
                 android:textAlignment="center"
                 android:textColor="#0757f6"
                 android:textSize="24sp"
@@ -86,9 +86,9 @@
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:paddingBottom="10dp"
-                android:id="@+id/phone_number"
+                android:id="@+id/emailAddress"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Phone Number">
+                android:hint="Email Address">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
