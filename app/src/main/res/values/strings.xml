@@ -11,4 +11,14 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
+    <string name="title_activity_home_drawer">HomeDrawerActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="chat_blank_fragment">Hello Messages fragment</string>
+    <string name="user_blank_fragment">Hello User fragment</string>
+    <string name="map_blank_fragment">Hello Map fragment</string>
+    <string name="shots_blank_fragment">Hello Shots fragment</string>
+    <string name="settings_blank_fragment">Hello Settings fragment</string>
+
 </resources>

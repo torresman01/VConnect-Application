@@ -25,15 +25,15 @@ public class loginActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
 
     //Using firebase to check if user account has been created already then login automatically.
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-//        if (firebaseUser != null){
-//            Intent intent = new Intent(loginActivity.this,SignUpActivity.class);
-//            startActivity(intent);
-//        }
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser != null){
+            Intent intent = new Intent(loginActivity.this,HomeDrawerActivity.class);
+            startActivity(intent);
+        }
+    }
 
     //Form validation
     private Boolean validateEmail(){
@@ -182,7 +182,7 @@ public class loginActivity extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
                     Toast.makeText(loginActivity.this, "Sign-in Successful!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(loginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(loginActivity.this, HomeDrawerActivity.class);
                     startActivity(intent);
                     finish();
 

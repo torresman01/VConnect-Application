@@ -22,4 +22,6 @@
     <style name="Theme.VConnectChatApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.VConnectChatApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
 </resources>
