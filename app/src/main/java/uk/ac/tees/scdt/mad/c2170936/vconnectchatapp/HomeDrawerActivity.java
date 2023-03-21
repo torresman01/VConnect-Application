@@ -1,5 +1,6 @@
 package uk.ac.tees.scdt.mad.c2170936.vconnectchatapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -32,6 +34,8 @@ public class HomeDrawerActivity extends AppCompatActivity {
 
     private FrameLayout main_frame;
 
+    //FirebaseAuth auth;
+
 
 
 
@@ -46,6 +50,8 @@ public class HomeDrawerActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_Navigation_View);
         main_frame = findViewById(R.id.nav_host_fragment_content_home_drawer);
+
+        //auth = FirebaseAuth.getInstance();
 
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -112,6 +118,21 @@ public class HomeDrawerActivity extends AppCompatActivity {
 //        getMenuInflater().inflate(R.menu.home_drawer, menu);
 //        return true;
 //    }
+//
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+////        Load settings fragment
+////        if(item.getItemId() == R.id.action_settings)
+////        {
+////            setFragment(new SettingsFragment());
+////        }
+//        if (item.getItemId() == R.id.action_signout){
+//
+//            auth.signOut();
+//            startActivity(new Intent(HomeDrawerActivity.this, loginActivity.class));
+//        }
+//
+//        return true;
+//    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -124,7 +145,11 @@ public class HomeDrawerActivity extends AppCompatActivity {
     {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(main_frame.getId(),fragment);
+        //ADDING BACKSTACK
+        transaction.addToBackStack(null);
         transaction.commit();
+
+
     }
 
 }
