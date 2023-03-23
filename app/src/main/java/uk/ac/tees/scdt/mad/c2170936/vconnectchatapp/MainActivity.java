@@ -5,17 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-import android.widget.Switch;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private FrameLayout MainFrame;
+    private AppBarLayout appBarLayout;
+
+    FirebaseAuth auth;
 
     private final BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -56,14 +63,15 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_Navigation_Bar);
         MainFrame = findViewById(R.id.frameMain);
+        appBarLayout = findViewById(R.id.actionMenuBar);
 
+        auth = FirebaseAuth.getInstance();
 
         bottomNavigationView.setOnItemSelectedListener(onNavigationItemSelectedListener);
 
+
+
         setFragment(new MessageFragment());
-
-
-
 
     }
 
@@ -71,5 +79,31 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(MainFrame.getId(),fragment);
         transaction.commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.chat_menu,menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.ProfileAction)
+        {
+            setFragment(new SettingsFragment());
+        }
+
+        if (item.getItemId() == R.id.SignOutAction)
+        {
+            auth.signOut();
+            startActivity(new Intent(MainActivity.this, loginActivity.class));
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

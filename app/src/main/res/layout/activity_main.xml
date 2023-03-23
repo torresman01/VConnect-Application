@@ -7,6 +7,18 @@
     android:background="@drawable/main_background"
     tools:context=".MainActivity">
 
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/actionMenuBar"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+
+        app:menu="@menu/chat_menu"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="1dp">
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_Navigation_Bar"
         android:layout_width="0dp"
@@ -26,8 +38,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_Navigation_Bar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/actionMenuBar"
+        app:layout_constraintVertical_bias="1.0">
 
     </FrameLayout>
 
