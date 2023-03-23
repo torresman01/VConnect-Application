@@ -1,14 +1,10 @@
 package uk.ac.tees.scdt.mad.c2170936.vconnectchatapp;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -162,7 +158,7 @@ public class SignUpActivity extends AppCompatActivity {
         regPhone = findViewById(R.id.phone);
         regSignUpBtn = findViewById(R.id.regSignup);
         callLogin = findViewById(R.id.login);
-        imageViewCircle = findViewById(R.id.imageViewCircle);
+        imageViewCircle = findViewById(R.id.imageViewCircleProfile1);
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
