@@ -2,6 +2,7 @@ package uk.ac.tees.scdt.mad.c2170936.vconnectchatapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private FrameLayout MainFrame;
-    private AppBarLayout appBarLayout;
+    private Toolbar appBarLayout;
 
     FirebaseAuth auth;
 
@@ -63,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_Navigation_Bar);
         MainFrame = findViewById(R.id.frameMain);
-        appBarLayout = findViewById(R.id.actionMenuBar);
+        appBarLayout = findViewById(R.id.myToolBar);
+
+        setSupportActionBar(appBarLayout);
 
         auth = FirebaseAuth.getInstance();
 
