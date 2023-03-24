@@ -260,6 +260,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     reference.child("User").child(auth.getUid()).child("phone").setValue(phone);
                     reference.child("User").child(auth.getUid()).child("name").setValue(name);
+                    reference.child("User").child(auth.getUid()).child("email").setValue(email);
 
                     if (imageControl){
 
