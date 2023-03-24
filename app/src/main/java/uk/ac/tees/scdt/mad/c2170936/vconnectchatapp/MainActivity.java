@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.ProfileAction)
         {
-            setFragment(new SettingsFragment());
+            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
         }
 
         if (item.getItemId() == R.id.SignOutAction)

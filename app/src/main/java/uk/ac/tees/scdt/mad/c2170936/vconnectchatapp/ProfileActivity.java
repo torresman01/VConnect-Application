@@ -32,8 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        profileName = findViewById(R.id.profileName112);
-        profilePhoneNumber = findViewById(R.id.profilePhone112);
+
         imageViewCircleProfile = findViewById(R.id.imageViewCircleProfile112);
 
         auth = FirebaseAuth.getInstance();
@@ -50,17 +49,15 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                String name = snapshot.child("name").getValue().toString();
-                String phone = snapshot.child("phone").getValue().toString();
+
                 String image = snapshot.child("image").getValue().toString();
 
-                profileName.setText(name);
-                profilePhoneNumber.setText(phone);
+
 
 
                 if (image.equals("null"))
                 {
-                    imageViewCircleProfile.setImageResource(R.drawable.ic_account_black);
+                    imageViewCircleProfile.setImageResource(R.drawable.ic_account);
                 }
                 else
                 {
