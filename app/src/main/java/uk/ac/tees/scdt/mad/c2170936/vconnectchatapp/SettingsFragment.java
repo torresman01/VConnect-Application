@@ -1,5 +1,7 @@
 package uk.ac.tees.scdt.mad.c2170936.vconnectchatapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,7 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +24,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -33,13 +39,16 @@ public class SettingsFragment extends Fragment {
 
     private TextView profileName, profilePhoneNumber;
     private CircleImageView imageViewCircleProfile;
-    private Button loadProfilePage, loadChangePassword, loadDeleteAccount;
-    Uri imageUri;
+    private Button loadProfilePage, loadChangePassword, loadDeleteAccount, acctSignOut;
+    AlertDialog.Builder alert;
+
 
     FirebaseDatabase database;
     DatabaseReference reference;
     FirebaseAuth auth;
     FirebaseUser firebaseUser;
+    FirebaseStorage storage;
+    StorageReference storageReference;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -91,11 +100,18 @@ public class SettingsFragment extends Fragment {
         profilePhoneNumber = view.findViewById(R.id.profilePhone);
         imageViewCircleProfile = view.findViewById(R.id.imageViewCircleProfile);
         loadProfilePage = view.findViewById(R.id.editBtn);
+        loadChangePassword = view.findViewById(R.id.changePasswordBtn);
+        loadDeleteAccount = view.findViewById(R.id.deleteAccountBtn);
+        acctSignOut = view.findViewById(R.id.signOutBtn);
+        alert = new AlertDialog.Builder(getContext());
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
         firebaseUser = auth.getCurrentUser();
+        storage = FirebaseStorage.getInstance();
+
+
 
         loadProfilePage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +123,35 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        loadChangePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getContext(),ChangePasswordActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        loadDeleteAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                deleteUserDetails();
+
+            }
+        });
+
+        acctSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Sign Out Successful", Toast.LENGTH_SHORT).show();
+                auth.signOut();
+                Intent intent = new Intent(getContext(),loginActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
 
         getUserDetails();
@@ -130,7 +175,7 @@ public class SettingsFragment extends Fragment {
 
                 if (image.equals("null"))
                 {
-                    imageViewCircleProfile.setImageResource(R.drawable.ic_account_black);
+                    imageViewCircleProfile.setImageResource(R.drawable.ic_account);
                 }
                 else
                 {
@@ -144,5 +189,36 @@ public class SettingsFragment extends Fragment {
 
             }
         });
+    }
+
+
+
+    public void deleteUserDetails()
+    {
+        alert.setTitle("Delete Account Permanently?")
+                .setMessage("Are You Sure?")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+//                        DatabaseReference DUser = FirebaseDatabase.getInstance().getReference("User").child(firebaseUser.getUid());
+//                        DUser.removeValue(); // this will empty the database tree
+
+                        //This will delete the authentication details
+                        firebaseUser.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+
+                                Toast.makeText(getContext(), "Account Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                auth.signOut();
+                                startActivity(new Intent(getContext(),loginActivity.class));
+                                getActivity().finish();
+
+                            }
+                        });
+
+                    }
+                }).setNegativeButton("Cancel", null)
+                .create().show();
     }
 }

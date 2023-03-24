@@ -66,15 +66,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/editTextTextPersonName"
+
+            <TextView
+                android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
                 android:text="Tap to upload image"
                 android:textAlignment="center"
-                android:textSize="14sp"
+                android:textColor="#0725CA"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
