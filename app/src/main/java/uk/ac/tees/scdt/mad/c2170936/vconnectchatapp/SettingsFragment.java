@@ -149,6 +149,7 @@ public class SettingsFragment extends Fragment {
                 auth.signOut();
                 Intent intent = new Intent(getContext(),loginActivity.class);
                 startActivity(intent);
+                getActivity().finish();
 
             }
         });

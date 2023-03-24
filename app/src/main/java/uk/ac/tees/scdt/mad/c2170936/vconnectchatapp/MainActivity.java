@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +25,19 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar appBarLayout;
 
     FirebaseAuth auth;
+    FirebaseUser firebaseUser;
+
+    //Using firebase to check if user account has been created already then login automatically.
+    @Override
+    protected void onStart() {
+        super.onStart();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser == null){
+            Intent intent = new Intent(MainActivity.this,loginActivity.class);
+            startActivity(intent);
+        }
+    }
+
 
     private final BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -105,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         {
             auth.signOut();
             startActivity(new Intent(MainActivity.this, loginActivity.class));
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
