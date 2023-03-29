@@ -299,7 +299,6 @@ public class SignUpActivity extends AppCompatActivity {
                     }
 
                     Intent intent = new Intent(SignUpActivity.this, loginActivity.class);
-                    intent.putExtra("name",name);
                     startActivity(intent);
                     finish();
 
