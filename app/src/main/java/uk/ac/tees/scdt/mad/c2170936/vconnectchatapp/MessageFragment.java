@@ -36,7 +36,7 @@ public class MessageFragment extends Fragment {
     DatabaseReference reference;
     FirebaseDatabase database;
 
-    String profileName;
+    String name;
     RecyclerView rView;
 
     List<String> list;
@@ -101,10 +101,10 @@ public class MessageFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                profileName = snapshot.getValue().toString();
+                name = snapshot.getValue().toString();
 
                 getUsers();
-                adapter = new MessageAdapter(list,profileName,getContext());  // CHANGE getContext() TO MAINACTIVITY
+                adapter = new MessageAdapter(list,name,getContext());
                 rView.setAdapter(adapter);
 
             }

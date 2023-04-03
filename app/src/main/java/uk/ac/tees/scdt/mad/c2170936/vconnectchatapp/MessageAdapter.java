@@ -74,7 +74,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(mContext,ChatActivity.class);
-
+                        intent.putExtra("name",name);
                         intent.putExtra("otherName",otherName);
                         mContext.startActivity(intent);
                     }
