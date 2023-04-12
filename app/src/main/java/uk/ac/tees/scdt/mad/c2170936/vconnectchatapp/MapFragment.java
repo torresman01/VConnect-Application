@@ -47,11 +47,13 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
-public class MapFragment extends Fragment implements OnMapReadyCallback {
+public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     boolean isPermissionGranted;
     MapView mapView;
     GoogleMap mGoogleMap;
+    FloatingActionButton fabLocation;
+    private FusedLocationProviderClient mLocationClient;
 
 
 
@@ -62,8 +64,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         View view =  inflater.inflate(R.layout.fragment_map, container, false);
 
         mapView = view.findViewById(R.id.google_map);
-        //fabLocation = view.findViewById(R.id.fabLocation);
-
+        fabLocation = view.findViewById(R.id.fabIcon);
 
         checkMyPermission();
 
@@ -71,10 +72,50 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         {
                 mapView.getMapAsync(this);
                 mapView.onCreate(savedInstanceState);
+        }
+
+        mLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
+
+        fabLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getCurrentLocation();
+
             }
+        });
+
+
+
+
 
 
         return view;
+    }
+
+    @SuppressLint("MissingPermission")
+    private void getCurrentLocation() {
+
+        mLocationClient.getLastLocation().addOnCompleteListener(task -> {
+
+            if (task.isSuccessful()){
+                Location location = task.getResult();
+                gotoLocation(location.getLatitude(), location.getLongitude());
+            }
+
+        });
+    }
+
+    private void gotoLocation(double latitude, double longitude) {
+
+        LatLng latLng = new LatLng(latitude, longitude);
+
+        //Set camera on location
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng,15);
+        MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Your Location");
+        mGoogleMap.addMarker(markerOptions);
+        mGoogleMap.moveCamera(cameraUpdate);
+        mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
     }
 
     private void checkMyPermission() {
@@ -102,10 +143,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @SuppressLint("MissingPermission")
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-
         mGoogleMap = googleMap;
-        mGoogleMap.setMyLocationEnabled(true);
-
+        //mGoogleMap.setMyLocationEnabled(true);
     }
 
     @Override
@@ -150,18 +189,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mapView.onLowMemory();
     }
 
-//    @Override
-//    public void onConnected(@Nullable Bundle bundle) {
-//
-//    }
-//
-//    @Override
-//    public void onConnectionSuspended(int i) {
-//
-//    }
-//
-//    @Override
-//    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-//
-//    }
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
 }
