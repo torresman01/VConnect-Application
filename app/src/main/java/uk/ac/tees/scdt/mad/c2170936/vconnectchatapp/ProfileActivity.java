@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextInputEditText profileName, profileEmail, profilePhone;
     private Button updateProfile;
     private CircleImageView imageViewCircleProfile;
+    private ImageView imageViewHome;
 
     boolean imageControl = false;
     Uri imageUri;
@@ -61,8 +63,7 @@ public class ProfileActivity extends AppCompatActivity {
         profileEmail = findViewById(R.id.profileUserEmail);
         profilePhone = findViewById(R.id.profileUserPhoneNumber);
         updateProfile = findViewById(R.id.updateProfileAccountBtn);
-
-
+        imageViewHome = findViewById(R.id.imageViewBackHome);
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -81,6 +82,19 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+
+
+        imageViewHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
 
 
         updateProfile.setOnClickListener(new View.OnClickListener() {

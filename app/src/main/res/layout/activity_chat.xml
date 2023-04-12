@@ -10,7 +10,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/app_color"
+        android:background="@color/purple_700"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:padding="7dp"
-            app:srcCompat="?attr/actionModeCloseDrawable" />
+            app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
         <TextView
             android:id="@+id/textViewChatting"
@@ -35,7 +35,7 @@
             android:padding="10dp"
             android:text="TextView"
             android:textAlignment="viewStart"
-            android:textColor="#090909"
+            android:textColor="#FBFBFB"
             android:textSize="24sp" />
     </LinearLayout>
 
@@ -43,7 +43,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/app_color"
+        android:background="@color/purple_700"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:clickable="true"
-            app:backgroundTint="@color/teal_200"
+            app:backgroundTint="@color/white"
             app:srcCompat="@android:drawable/ic_menu_send" />
     </LinearLayout>
 
@@ -78,6 +78,7 @@
         android:id="@+id/rViewChat"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/collections"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

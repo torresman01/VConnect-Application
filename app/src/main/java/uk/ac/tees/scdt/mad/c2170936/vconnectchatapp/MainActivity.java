@@ -78,9 +78,9 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_Navigation_Bar);
         MainFrame = findViewById(R.id.frameMain);
-        appBarLayout = findViewById(R.id.myToolBar);
+        Toolbar appBar = findViewById(R.id.toolbar);
 
-        setSupportActionBar(appBarLayout);
+        setSupportActionBar(appBar);
 
         auth = FirebaseAuth.getInstance();
 
@@ -113,6 +113,11 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.ProfileAction)
         {
             startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+        }
+
+        if (item.getItemId() == R.id.ProfileSettings)
+        {
+            setFragment(new SettingsFragment());
         }
 
         if (item.getItemId() == R.id.SignOutAction)
