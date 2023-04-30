@@ -1,64 +1,37 @@
 package uk.ac.tees.scdt.mad.c2170936.vconnectchatapp;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ShotsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.fragment.app.Fragment;
+
 public class ShotsFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private TextView city, temperature, weatherCondition, humidity, maxTemp, minTemp, pressure, wind;
+    private ImageView imageView;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ShotsFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ShotsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ShotsFragment newInstance(String param1, String param2) {
-        ShotsFragment fragment = new ShotsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shots, container, false);
+        View view =  inflater.inflate(R.layout.fragment_shots, container, false);
+
+        city = view.findViewById(R.id.textViewCity);
+        temperature = view.findViewById(R.id.textViewTemp);
+        weatherCondition = view.findViewById(R.id.textViewWeatherCond);
+        humidity = view.findViewById(R.id.textViewHumidity);
+        maxTemp = view.findViewById(R.id.textViewMaxTemp);
+        minTemp = view.findViewById(R.id.textViewMinTemp);
+        pressure = view.findViewById(R.id.textViewPressure);
+        wind = view.findViewById(R.id.textViewWind);
+        imageView = view.findViewById(R.id.imageViewBackground);
+
+
+        return view;
     }
 }
